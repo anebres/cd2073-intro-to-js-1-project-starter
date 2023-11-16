@@ -15,18 +15,59 @@
    - strawberry.jpg by Allec Gomes
 */
 
+const cherries = {
+  name: "Carton of Cherries",
+  price: 4,
+  quantity: 0,
+  productId: 100,
+  image: "images/cherry.jpg",
+};
+
+const strawberries = {
+  name: "Carton of Strawberries",
+  price: 5,
+  quantity: 0,
+  productId: 101,
+  image: "images/strawberry.jpg",
+};
+
+const oranges = {
+  name: "Bag of Oranges",
+  price: 10,
+  quantity: 0,
+  productId: 102,
+  image: "images/orange.jpg",
+};
+
+const products = [cherries, strawberries, oranges];
+
 /* Declare an empty array named cart to hold the items in the cart */
+let cart = [];
 
 /* Create a function named addProductToCart that takes in the product productId as an argument
   - addProductToCart should get the correct product based on the productId
   - addProductToCart should then increase the product's quantity
   - if the product is not already in the cart, add it to the cart
 */
+unction addProductToCart(productId) {
+  let productToAdd = products.find(product => product.productId === productId);
+  productToAdd.quantity += 1;
+  let productInCart = cart.find(item => item.productId === productId);
+  if (!productInCart) {
+    cart.push(productToAdd);
+  }
+}
 
 /* Create a function named increaseQuantity that takes in the productId as an argument
   - increaseQuantity should get the correct product based on the productId
   - increaseQuantity should then increase the product's quantity
 */
+function increaseQuantity(productId) {
+  let productInCart = cart.find(item => item.productId === productId);
+  if (productInCart) {
+    productInCart.quantity += 1;
+  }
+}
 
 /* Create a function named decreaseQuantity that takes in the productId as an argument
   - decreaseQuantity should get the correct product based on the productId
